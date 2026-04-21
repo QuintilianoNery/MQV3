@@ -1,0 +1,32 @@
+1. MQV³ — Wordmark
+
+Fonte: Orbitron 700
+Tamanho estimado: 18–20px (digital) / 11pt (impressão)
+O "³" em Teal Neon (#0FDCC0), superscript
+
+
+2. Nome
+
+Fonte: Sora 700 (Bold)
+Tamanho estimado: 20–22px / 12–13pt
+Cor: Branco puro (#FFFFFF)
+
+
+3.  Cargo
+
+Fonte: Sora 300 (Light)
+Tamanho estimado: 13–14px / 8pt
+Cor: rgba(226,238,255, ~0.45) — branco acinzentado
+
+
+4. Contato (e-mail, telefone, site) — dados técnicos
+
+Fonte: JetBrains Mono 400
+Tamanho estimado: 11–12px / 7pt
+E-mail: Teal Neon (#0FDCC0)
+Telefone e site: rgba(226,238,255, ~0.40) — mais apagados, hierarquia secundária
+
+
+Elemento decorativo (círculo superior direito)
+
+Borda em Teal com baixa opacidade (~0.12), sem texto — puramente visual para dar profundidade ao layout.
