@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MQV³ — Apresentação Institucional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0FDCC0;
+    --cobalt: #1A5FF8;
+    --indigo: #1248C8;
+    --midnight: #060F1D;
+    --midnight-2: #0A1628;
+    --midnight-3: #0E1E36;
+    --nevoa: #F3F7FB;
+    --text-main: #E2EEFF;
+    --text-muted: #7A8FA8;
+    --text-dim: #3A5068;
+    --border: rgba(255,255,255,0.06);
+    --border-teal: rgba(15,220,192,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--midnight);
+    color: var(--text-main);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ——— GRID NOISE TEXTURE ——— */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(15,220,192,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,220,192,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  section, nav, footer { position: relative; z-index: 1; }
+
+  /* ——— TYPOGRAPHY ——— */
+  .font-orbit { font-family: 'Orbitron', monospace; }
+  .font-mono  { font-family: 'DM Mono', monospace; }
+
+  h1, h2, h3 { font-family: 'Orbitron', monospace; font-weight: 700; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  /* ——— NAV ——— */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(6,15,29,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    font-family: 'DM Mono', monospace;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  .nav-cta {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--midnight);
+    background: var(--teal);
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ——— HERO ——— */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    position: relative;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(15,220,192,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    width: 400px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(26,95,248,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    border: 0.5px solid var(--border-teal);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-logo-big {
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-tagline {
+    font-size: clamp(36px, 5vw, 64px);
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-tagline span { color: var(--teal); }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--midnight);
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 0.5px solid rgba(255,255,255,0.2);
+    color: var(--text-main);
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  @keyframes scrollPulse {
+    0% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ——— SECTION BASE ——— */
+  .section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 44px);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .section-intro {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ——— DIVIDER ——— */
+  .divider {
+    width: 100%;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, var(--border-teal), transparent);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ——— SOBRE / CONTEXTO ——— */
+  #sobre .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .sobre-stat {
+    border-top: 0.5px solid var(--border-teal);
+    padding-top: 20px;
+    margin-bottom: 32px;
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .sobre-text p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+
+  .sobre-text p strong { color: var(--text-main); font-weight: 500; }
+
+  /* ——— MVV ——— */
+  #mvv { background: var(--midnight-2); }
+
+  #mvv .inner {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+
+  .mvv-card {
+    background: var(--midnight-2);
+    padding: 40px 36px;
+    position: relative;
+  }
+
+  .mvv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .mvv-card:nth-child(1)::before { background: var(--teal); }
+  .mvv-card:nth-child(2)::before { background: var(--cobalt); }
+  .mvv-card:nth-child(3)::before { background: var(--indigo); }
+
+  .mvv-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mvv-label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  .mvv-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--text-main);
+  }
+
+  .mvv-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* ——— VALORES ——— */
+  .valores-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+
+  .valor-item {
+    background: var(--midnight-2);
+    padding: 28px 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .valor-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    min-width: 24px;
+    padding-top: 3px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .valor-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+  }
+
+  .valor-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ——— ASA METODOLOGIA ——— */
+  #asa .asa-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 60px;
+  }
+
+  .asa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15,220,192,0.07);
+    border: 0.5px solid var(--border-teal);
+    border-radius: 100px;
+    padding: 10px 20px 10px 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .asa-badge-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .asa-badge-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+  }
+
+  .asa-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .asa-pillar {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .asa-pillar-letter {
+    background: var(--midnight-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 32px;
+    font-weight: 900;
+    padding: 28px 0;
+  }
+  .asa-pillar:nth-child(1) .asa-pillar-letter { color: var(--teal); }
+  .asa-pillar:nth-child(2) .asa-pillar-letter { color: var(--cobalt); }
+  .asa-pillar:nth-child(3) .asa-pillar-letter { color: var(--indigo); }
+
+  .asa-pillar-content {
+    background: var(--midnight-2);
+    padding: 24px 28px;
+  }
+
+  .asa-pillar-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .asa-pillar-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ——— DIFERENCIAIS ——— */
+  #diferenciais { background: var(--midnight-2); }
+
+  #diferenciais .inner {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  .diff-card {
+    background: var(--midnight);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diff-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--teal), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .diff-card:hover {
+    border-color: rgba(15,220,192,0.25);
+    transform: translateY(-3px);
+  }
+  .diff-card:hover::after { opacity: 1; }
+
+  .diff-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    margin-bottom: 20px;
+  }
+
+  .diff-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 20px;
+  }
+
+  .diff-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+
+  .diff-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ——— POSICIONAMENTO ——— */
+  .pos-wrapper {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .pos-card-main {
+    background: linear-gradient(135deg, rgba(15,220,192,0.08) 0%, rgba(26,95,248,0.06) 100%);
+    border: 0.5px solid var(--border-teal);
+    border-radius: 20px;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pos-card-main::before {
+    content: 'MQV³';
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+    font-family: 'Orbitron', monospace;
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(15,220,192,0.04);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -4px;
+  }
+
+  .pos-card-main h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    line-height: 1.3;
+  }
+
+  .pos-card-main p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .pos-tag {
+    display: inline-flex;
+    background: rgba(15,220,192,0.12);
+    color: var(--teal);
+    border: 0.5px solid var(--border-teal);
+    border-radius: 100px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.12em;
+    padding: 5px 14px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .pos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .pos-item {
+    background: var(--midnight-2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .pos-item-dot {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+
+  .pos-item-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .pos-item-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 3px;
+  }
+
+  /* ——— CTA FINAL ——— */
+  #cta {
+    text-align: center;
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(15,220,192,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cta-inner { max-width: 680px; margin: 0 auto; }
+
+  .cta-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: clamp(30px, 4vw, 48px);
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .cta-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ——— FOOTER ——— */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 36px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-tagline {
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ——— SCROLL ANIMATIONS ——— */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .section { padding: 72px 24px; }
+    #mvv .inner, #diferenciais .inner { padding: 72px 24px; }
+    #sobre .grid-2, .mvv-grid, .diff-grid, #asa .asa-header, .pos-wrapper { grid-template-columns: 1fr; }
+    .valores-grid { grid-template-columns: 1fr; }
+    .hero-tagline { font-size: 36px; }
+    #cta { padding: 80px 24px; }
+    footer { padding: 28px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg width="140" height="34" viewBox="0 0 140 34" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="20,7 36,13 20,18 4,13" fill="#0FDCC0"/>
+      <polygon points="4,13 20,18 20,27 4,22" fill="#1A5FF8"/>
+      <polygon points="36,13 36,22 20,27 20,18" fill="#1E70FF"/>
+      <polyline points="20,7 36,13 36,22 20,27 4,22 4,13 20,7" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.75"/>
+      <line x1="20" y1="7" x2="20" y2="18" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+      <line x1="4" y1="13" x2="20" y2="18" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+      <line x1="36" y1="13" x2="20" y2="18" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+      <text x="44" y="25" font-family="'Orbitron','Courier New',monospace" font-weight="700" font-size="17" fill="#E2EEFF" letter-spacing="2">MQV</text>
+      <text x="100" y="9" font-family="'Orbitron','Courier New',monospace" font-weight="700" font-size="9" fill="#0FDCC0">3</text>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#mvv">Missão</a></li>
+    <li><a href="#asa">Metodologia</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#posicionamento">Mercado</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Fale conosco</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-badge">Startup de Tecnologia Premium</div>
+
+  <div class="hero-logo-big">
+    <svg width="300" height="74" viewBox="0 0 300 74" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,10 72,20 40,28 8,20" fill="#0FDCC0"/>
+      <polygon points="8,20 40,28 40,50 8,42" fill="#1A5FF8"/>
+      <polygon points="72,20 72,42 40,50 40,28" fill="#1E70FF"/>
+      <polyline points="40,10 72,20 72,42 40,50 8,42 8,20 40,10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.75"/>
+      <line x1="40" y1="10" x2="40" y2="28" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+      <line x1="8" y1="20" x2="40" y2="28" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+      <line x1="72" y1="20" x2="40" y2="28" stroke="rgba(255,255,255,0.07)" stroke-width="0.5"/>
+      <text x="90" y="54" font-family="'Orbitron','Courier New',monospace" font-weight="700" font-size="38" fill="#E2EEFF" letter-spacing="3">MQV</text>
+      <text x="218" y="18" font-family="'Orbitron','Courier New',monospace" font-weight="700" font-size="18" fill="#0FDCC0">3</text>
+    </svg>
+  </div>
+
+  <h1 class="hero-tagline">
+    Tecnologia que<br><span>transforma negócios</span>
+  </h1>
+
+  <p class="hero-sub">
+    Desenvolvemos infraestrutura digital de alto impacto — software robusto, sistemas escaláveis e experiências centradas no usuário que impulsionam crescimento real no mercado global.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#asa" class="btn-primary">Conheça nossa metodologia</a>
+    <a href="#mvv" class="btn-outline">Nossa missão</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+  <div class="section-label">Sobre a MQV³</div>
+  <div class="grid-2">
+    <div>
+      <h2 class="section-title reveal">Nascida da intersecção entre engenharia e design</h2>
+    </div>
+    <div class="sobre-text reveal">
+      <p>A <strong>MQV³</strong> é uma startup de tecnologia especializada no desenvolvimento de software personalizado e sites institucionais de alto impacto. Combinamos rigor de engenharia com sensibilidade de design para entregar soluções que não apenas funcionam — mas que <strong>impressionam e convertem</strong>.</p>
+      <p>Nosso nome carrega nosso propósito: <strong>Modernidade, Qualidade e Visão</strong> — o tripé que orienta cada decisão técnica e estratégica que tomamos junto aos nossos clientes.</p>
+      <p>Não somos apenas fornecedores. Somos <strong>parceiros estratégicos de inovação</strong> que compartilham do ambição de crescimento de cada empresa que atendemos.</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 64px; border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden;">
+    <div class="sobre-stat" style="border: none; border-right: 0.5px solid var(--border); padding: 36px 40px; margin: 0;">
+      <div class="stat-num reveal">100%</div>
+      <div class="stat-label">Software personalizado</div>
+    </div>
+    <div class="sobre-stat" style="border: none; border-right: 0.5px solid var(--border); padding: 36px 40px; margin: 0;">
+      <div class="stat-num reveal">High-End</div>
+      <div class="stat-label">Posicionamento de mercado</div>
+    </div>
+    <div class="sobre-stat" style="border: none; padding: 36px 40px; margin: 0;">
+      <div class="stat-num reveal">ASA</div>
+      <div class="stat-label">Metodologia proprietária</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MISSÃO VISÃO VALORES -->
+<section id="mvv" style="background: var(--midnight-2); padding: 0;">
+  <div class="inner">
+    <div class="section-label">Missão · Visão · Valores</div>
+    <h2 class="section-title reveal">O que nos move e para onde vamos</h2>
+
+    <div class="mvv-grid">
+      <div class="mvv-card reveal">
+        <div class="mvv-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="#0FDCC0" stroke-width="1"/>
+            <circle cx="16" cy="16" r="5" fill="#0FDCC0" opacity="0.3"/>
+            <circle cx="16" cy="16" r="2" fill="#0FDCC0"/>
+            <line x1="16" y1="2" x2="16" y2="8" stroke="#0FDCC0" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="24" x2="16" y2="30" stroke="#0FDCC0" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="2" y1="16" x2="8" y2="16" stroke="#0FDCC0" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="24" y1="16" x2="30" y2="16" stroke="#0FDCC0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="mvv-label">01 — Missão</div>
+        <h3 class="mvv-title">Infraestrutura tecnológica de excelência</h3>
+        <p class="mvv-text">Desenvolver infraestrutura tecnológica que conecte empresas ao seu potencial máximo, através de software robusto, escalável e inovador que impulsiona o crescimento real de cada cliente.</p>
+      </div>
+
+      <div class="mvv-card reveal">
+        <div class="mvv-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 28 L16 4 L28 28" stroke="#1A5FF8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 22 L24 22" stroke="#1A5FF8" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="16" cy="14" r="2" fill="#1A5FF8"/>
+          </svg>
+        </div>
+        <div class="mvv-label">02 — Visão</div>
+        <h3 class="mvv-title">Referência nacional em software high-end</h3>
+        <p class="mvv-text">Ser a principal referência nacional em desenvolvimento de software de alto padrão, reconhecida pela sofisticação técnica e pela capacidade única de antecipar tendências tecnológicas.</p>
+      </div>
+
+      <div class="mvv-card reveal">
+        <div class="mvv-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <polygon points="16,3 20,12 30,12 22,19 25,28 16,22 7,28 10,19 2,12 12,12" stroke="#1248C8" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="mvv-label">03 — Valores</div>
+        <h3 class="mvv-title">Os pilares que definem nossa cultura</h3>
+        <p class="mvv-text">Quatro princípios inegociáveis que orientam cada linha de código escrita, cada decisão tomada e cada relacionamento construído com nossos clientes e parceiros.</p>
+      </div>
+    </div>
+
+    <div class="valores-grid" style="margin-top: 16px;">
+      <div class="valor-item reveal">
+        <div class="valor-num">01</div>
+        <div>
+          <div class="valor-title">Inovação Contínua</div>
+          <div class="valor-text">Explorar permanentemente o estado da arte da tecnologia, trazendo soluções que ainda não existem para problemas que ainda vão aparecer.</div>
+        </div>
+      </div>
+      <div class="valor-item reveal">
+        <div class="valor-num">02</div>
+        <div>
+          <div class="valor-title">Transparência Radical</div>
+          <div class="valor-text">Relações de confiança construídas sobre honestidade e clareza absolutas — sem surpresas, sem subterfúgios, sem ruídos na comunicação.</div>
+        </div>
+      </div>
+      <div class="valor-item reveal">
+        <div class="valor-num">03</div>
+        <div>
+          <div class="valor-title">Rigor Técnico</div>
+          <div class="valor-text">Compromisso inabalável com a qualidade do código em cada entrega — arquitetura limpa, documentada, testada e pronta para escalar.</div>
+        </div>
+      </div>
+      <div class="valor-item reveal">
+        <div class="valor-num">04</div>
+        <div>
+          <div class="valor-title">Foco no Futuro</div>
+          <div class="valor-text">Projetar soluções sustentáveis que não apenas resolvam os desafios de hoje, mas que permaneçam relevantes e eficientes nos próximos anos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- METODOLOGIA ASA -->
+<section id="asa" class="section">
+  <div class="asa-header">
+    <div>
+      <div class="asa-badge">
+        <div class="asa-badge-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2 L14 8 L8 14 L2 8 Z" fill="#060F1D" stroke="#060F1D"/>
+          </svg>
+        </div>
+        <span class="asa-badge-text">Metodologia ASA</span>
+      </div>
+      <div class="section-label">Nossa abordagem</div>
+      <h2 class="section-title reveal">Ágil.<br>Seguro.<br>Arquitetado.</h2>
+    </div>
+    <div>
+      <p class="section-intro reveal" style="margin-top: 80px;">Nossa metodologia proprietária ASA representa o tripé que sustenta cada projeto desenvolvido na MQV³. Não é apenas um processo — é uma filosofia de construção que garante excelência do planejamento à entrega, e além.</p>
+    </div>
+  </div>
+
+  <div class="asa-pillars">
+    <div class="asa-pillar reveal">
+      <div class="asa-pillar-letter">A</div>
+      <div class="asa-pillar-content">
+        <div class="asa-pillar-title">Arquitetura Limpa — Clean Code</div>
+        <div class="asa-pillar-text">Desenvolvemos sistemas com código modular, legível e de fácil manutenção. Cada componente é projetado para ser substituído ou expandido sem comprometer o todo, reduzindo drasticamente o custo de propriedade a longo prazo e acelerando futuras evoluções do produto.</div>
+      </div>
+    </div>
+
+    <div class="asa-pillar reveal">
+      <div class="asa-pillar-letter">S</div>
+      <div class="asa-pillar-content">
+        <div class="asa-pillar-title">Segurança por Design</div>
+        <div class="asa-pillar-text">Protocolos de proteção de dados implementados desde a primeira linha de código — não como camada adicional, mas como fundação da arquitetura. Garantimos conformidade regulatória e proteção robusta contra ameaças, integrando práticas de segurança em cada ciclo do desenvolvimento.</div>
+      </div>
+    </div>
+
+    <div class="asa-pillar reveal">
+      <div class="asa-pillar-letter">A</div>
+      <div class="asa-pillar-content">
+        <div class="asa-pillar-title">Agilidade Funcional</div>
+        <div class="asa-pillar-text">Processos de entrega contínua que permitem adaptações rápidas às mudanças de mercado sem comprometer a estabilidade do produto. Sprints bem definidos, pipelines de CI/CD e comunicação constante garantem que o cliente sempre saiba onde está o projeto e para onde vai.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais" style="background: var(--midnight-2); padding: 0;">
+  <div class="inner">
+    <div class="section-label">Diferenciais Competitivos</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+      <h2 class="section-title reveal">Por que escolher a MQV³</h2>
+      <p class="section-intro reveal" style="margin-top: 12px;">Em um mercado saturado de soluções genéricas, a MQV³ entrega o que poucos conseguem: sofisticação técnica aliada à visão de negócio do cliente.</p>
+    </div>
+
+    <div class="diff-grid">
+      <div class="diff-card reveal">
+        <div class="diff-num">01 ·</div>
+        <svg class="diff-icon" viewBox="0 0 42 42" fill="none">
+          <rect x="6" y="8" width="30" height="26" rx="2" stroke="#0FDCC0" stroke-width="1.2"/>
+          <line x1="12" y1="16" x2="30" y2="16" stroke="#0FDCC0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="12" y1="21" x2="24" y2="21" stroke="#0FDCC0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="12" y1="26" x2="27" y2="26" stroke="#0FDCC0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="34" cy="32" r="5" fill="#0FDCC0" opacity="0.15" stroke="#0FDCC0" stroke-width="1"/>
+          <path d="M32 32 L33.5 33.5 L36 31" stroke="#0FDCC0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="diff-title">Software 100% Personalizado</div>
+        <div class="diff-text">Zero templates. Zero soluções de prateleira. Cada sistema é construído sob medida para o contexto, os objetivos e as particularidades do cliente.</div>
+      </div>
+
+      <div class="diff-card reveal">
+        <div class="diff-num">02 ·</div>
+        <svg class="diff-icon" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="13" stroke="#1A5FF8" stroke-width="1.2"/>
+          <path d="M16 21 L19 24 L26 17" stroke="#1A5FF8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="21" cy="21" r="6" stroke="#1A5FF8" stroke-width="0.7" opacity="0.3"/>
+        </svg>
+        <div class="diff-title">Qualidade sem Compromisso</div>
+        <div class="diff-text">Testes automatizados, code reviews e QA integrado em cada etapa do desenvolvimento. Entregamos com confiança porque validamos com rigor.</div>
+      </div>
+
+      <div class="diff-card reveal">
+        <div class="diff-num">03 ·</div>
+        <svg class="diff-icon" viewBox="0 0 42 42" fill="none">
+          <path d="M8 34 L8 20 L16 14 L21 18 L26 10 L34 16 L34 34" stroke="#1248C8" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+          <line x1="8" y1="34" x2="34" y2="34" stroke="#1248C8" stroke-width="1" stroke-linecap="round"/>
+          <circle cx="21" cy="18" r="2" fill="#1248C8" opacity="0.5"/>
+        </svg>
+        <div class="diff-title">Escalabilidade por Design</div>
+        <div class="diff-text">Arquiteturas projetadas para crescer junto com o negócio. O que funciona para 100 usuários hoje deve funcionar para 100 mil amanhã — sem refatorações emergenciais.</div>
+      </div>
+
+      <div class="diff-card reveal">
+        <div class="diff-num">04 ·</div>
+        <svg class="diff-icon" viewBox="0 0 42 42" fill="none">
+          <rect x="8" y="12" width="10" height="10" rx="2" stroke="#0FDCC0" stroke-width="1.2"/>
+          <rect x="24" y="12" width="10" height="10" rx="2" stroke="#1A5FF8" stroke-width="1.2"/>
+          <rect x="16" y="26" width="10" height="10" rx="2" stroke="#1248C8" stroke-width="1.2"/>
+          <line x1="13" y1="22" x2="21" y2="26" stroke="#0FDCC0" stroke-width="0.8" opacity="0.5"/>
+          <line x1="29" y1="22" x2="21" y2="26" stroke="#1A5FF8" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+        <div class="diff-title">Parceria Estratégica</div>
+        <div class="diff-text">Não apenas executamos requisitos — questionamos, sugerimos e co-criamos. Nosso papel vai além do código: somos consultores de tecnologia comprometidos com o resultado do cliente.</div>
+      </div>
+
+      <div class="diff-card reveal">
+        <div class="diff-num">05 ·</div>
+        <svg class="diff-icon" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6 L21 36" stroke="#0FDCC0" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+          <path d="M6 21 L36 21" stroke="#0FDCC0" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+          <circle cx="21" cy="21" r="10" stroke="#0FDCC0" stroke-width="1.2"/>
+          <path d="M15 21 Q18 15 21 21 Q24 27 27 21" stroke="#0FDCC0" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="diff-title">Presença Global</div>
+        <div class="diff-text">Soluções construídas com padrões internacionais de desenvolvimento, prontas para operar em qualquer mercado e integrações com plataformas globais.</div>
+      </div>
+
+      <div class="diff-card reveal">
+        <div class="diff-num">06 ·</div>
+        <svg class="diff-icon" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="14" stroke="#1A5FF8" stroke-width="1.2"/>
+          <path d="M14 21 Q17 14 21 17 Q25 20 28 14" stroke="#0FDCC0" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M13 25 Q16 20 19 23 Q22 26 26 19 Q28 16 30 19" stroke="#1A5FF8" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+        <div class="diff-title">Inovação Antecipada</div>
+        <div class="diff-text">Acompanhamos ativamente as tendências emergentes — IA, automação, edge computing — para incorporar o que há de mais avançado nas soluções que entregamos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- POSICIONAMENTO -->
+<section id="posicionamento" class="section">
+  <div class="section-label">Posicionamento de Mercado</div>
+  <h2 class="section-title reveal">Tecnologia Premium.<br>Parceiros de Alto Impacto.</h2>
+
+  <div class="pos-wrapper">
+    <div class="pos-card-main reveal">
+      <div class="pos-tag">Segmento Premium</div>
+      <h3>Não somos um fornecedor — somos uma vantagem competitiva</h3>
+      <p style="margin-top: 16px;">Como uma startup em rápida ascensão, a MQV³ se posiciona no segmento de Tecnologia Premium. Nossa reputação é construída sobre entregas impecáveis e suporte consultivo — cada projeto é tratado como se fosse o único.</p>
+      <p style="margin-top: 16px;">Atraímos empresas que não buscam apenas um site ou aplicativo, mas uma transformação digital real, mensurável e sustentável — uma vantagem competitiva concreta no mundo digital.</p>
+    </div>
+
+    <div>
+      <div class="pos-list">
+        <div class="pos-item reveal">
+          <div class="pos-item-dot"></div>
+          <div class="pos-item-text">
+            <strong>Clientes que nos escolhem buscam excelência</strong>
+            Empresas e empreendedores que entendem que tecnologia de qualidade é investimento — não custo — e que querem um produto que impressiona do primeiro acesso ao uso diário.
+          </div>
+        </div>
+        <div class="pos-item reveal">
+          <div class="pos-item-dot"></div>
+          <div class="pos-item-text">
+            <strong>Nossa marca é sinônimo de modernidade</strong>
+            Cada entrega da MQV³ carrega a assinatura da sofisticação técnica e da atenção ao detalhe que se tornaram nossa identidade no mercado.
+          </div>
+        </div>
+        <div class="pos-item reveal">
+          <div class="pos-item-dot"></div>
+          <div class="pos-item-text">
+            <strong>Crescimento acelerado com base sólida</strong>
+            Como startup, temos a agilidade para inovar e a maturidade para entregar — combinando a energia de quem está construindo algo novo com a disciplina de quem sabe o que está fazendo.
+          </div>
+        </div>
+        <div class="pos-item reveal">
+          <div class="pos-item-dot"></div>
+          <div class="pos-item-text">
+            <strong>Suporte consultivo além do código</strong>
+            Orientamos decisões de produto, arquitetura e roadmap tecnológico — porque acreditamos que o sucesso do cliente é a nossa melhor apresentação.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="cta-kicker">Pronto para o próximo nível?</div>
+    <h2 class="cta-title reveal">Vamos construir algo extraordinário juntos</h2>
+    <p class="cta-sub reveal">Conte-nos sobre seu projeto. Nossa equipe está pronta para transformar sua visão em uma solução digital de alto impacto.</p>
+    <div class="cta-actions reveal">
+      <a href="mailto:contato@mqv3.com.br" class="btn-primary">Iniciar conversa</a>
+      <a href="#sobre" class="btn-outline">Saiba mais sobre nós</a>
+    </div>
+
+    <div style="margin-top: 60px; padding-top: 48px; border-top: 0.5px solid var(--border); display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Modernidade</div>
+        <div style="font-family: 'Orbitron', monospace; font-size: 20px; color: var(--teal);">M</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Qualidade</div>
+        <div style="font-family: 'Orbitron', monospace; font-size: 20px; color: var(--cobalt);">Q</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Visão</div>
+        <div style="font-family: 'Orbitron', monospace; font-size: 20px; color: var(--indigo);">V</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px;">Cúbico</div>
+        <div style="font-family: 'Orbitron', monospace; font-size: 20px; color: var(--teal);">³</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <svg width="90" height="22" viewBox="0 0 90 22" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="12,3 22,7 12,10 2,7" fill="#0FDCC0"/>
+      <polygon points="2,7 12,10 12,16 2,13" fill="#1A5FF8"/>
+      <polygon points="22,7 22,13 12,16 12,10" fill="#1E70FF"/>
+      <text x="27" y="16" font-family="'Orbitron','Courier New',monospace" font-weight="700" font-size="11" fill="#E2EEFF" letter-spacing="1.5">MQV</text>
+      <text x="61" y="6" font-family="'Orbitron','Courier New',monospace" font-weight="700" font-size="6" fill="#0FDCC0">3</text>
+    </svg>
+    <span class="footer-copy">© 2026 MQV³ · Todos os direitos reservados</span>
+  </div>
+  <span class="footer-tagline">Modernidade · Qualidade · Visão</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
