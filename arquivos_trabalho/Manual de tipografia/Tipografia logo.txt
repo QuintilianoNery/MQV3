@@ -1,6 +1,0 @@
-A fonte usada na logo da MQV³ é a Orbitron, peso 700 (Bold).
-É uma tipografia geométrica com traços técnicos e futuristas, criada por Matt McInerney e disponível gratuitamente no Google Fonts e via pacote @fontsource/orbitron.
-Ela é usada especificamente em dois elementos da marca:
-
-"MQV" — Orbitron 700, tamanho 26px no SVG, com letter-spacing: 2
-"³" — Orbitron 700, tamanho 13px, posicionado como superscript em Teal Neon (#0FDCC0)
